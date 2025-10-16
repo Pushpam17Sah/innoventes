@@ -1,17 +1,26 @@
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
 from my_app.builders.response_builder import ResponseBuilder
 from my_app.serializers.company_serializer import CompanySerializer
 from my_app.services.company_service import CompanyService
-from my_app.utils.pagination import StandardResultsSetPagination
+from my_app.utils.pagination import paginate
 
 
-class GetAllCompaniesView(ListAPIView):
-    serializer_class = CompanySerializer
-    pagination_class = StandardResultsSetPagination
+class GetAllCompaniesView(APIView):
+    def get(self, request):
+        response_builder = ResponseBuilder()
 
-    def get_queryset(self):
-        return CompanyService.get_all_companies()
+        companies = CompanyService.get_all_companies()
+
+        paginated_companies, page_info = paginate(companies, request)
+        serializer = CompanySerializer(paginated_companies, many=True)
+
+        result = {
+            "company_infos": serializer.data,
+            "pagination": page_info
+        }
+
+        return response_builder.result_object(result).success().ok_200().message(
+            "Companies fetched successfully").get_response()
 
 
 class GetCompanyByIdView(APIView):
