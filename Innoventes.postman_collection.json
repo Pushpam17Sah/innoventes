@@ -1,0 +1,866 @@
+{
+	"info": {
+		"_postman_id": "be8f223f-fbc8-4485-93ca-c75646c7db6d",
+		"name": "Innoventes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24414552"
+	},
+	"item": [
+		{
+			"name": "Create company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"RMT\",\n    \"email\": \"rmt@gmail.com\",\n    \"code\": \"AB12N\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/v1/company/",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"company",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Innoventes\",\n    \"email\": \"innoventes@gmail.com\",\n    \"code\": \"AB12E\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/company/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:05:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "301"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": 1,\n    \"status-message\": \"Company created successfully.\",\n    \"data\": {\n        \"id\": \"392f9d66-399c-4220-8deb-ba34891f6c42\",\n        \"name\": \"Innoventes\",\n        \"email\": \"innoventes@gmail.com\",\n        \"code\": \"AB12E\",\n        \"strength\": 1,\n        \"website_url\": \"\",\n        \"created_at\": \"2025-10-16T13:05:38.343734Z\",\n        \"updated_at\": \"2025-10-16T13:05:38.343788Z\"\n    }\n}"
+				},
+				{
+					"name": "Code must be exactly 5 characters long",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Innoventes\",\n    \"email\": \"innoventes@gmail.com\",\n    \"code\": \"ABC\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/company/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:04:02 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "111"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": -1,\n    \"status-message\": \"Invalid data.\",\n    \"data\": {\n        \"code\": [\n            \"Code must be exactly 5 characters long.\"\n        ]\n    }\n}"
+				},
+				{
+					"name": "The third and fourth characters must be digits",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Innoventes\",\n    \"email\": \"innoventes@gmail.com\",\n    \"code\": \"ABCDE\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/company/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:04:52 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": -1,\n    \"status-message\": \"Invalid data.\",\n    \"data\": {\n        \"code\": [\n            \"The third and fourth characters must be digits.\"\n        ]\n    }\n}"
+				},
+				{
+					"name": "Uniqueness",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Innoventes\",\n    \"email\": \"innoventes@gmail.com\",\n    \"code\": \"AB12E\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/company/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:06:01 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "212"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": -1,\n    \"status-message\": \"Invalid data.\",\n    \"data\": {\n        \"name\": [\n            \"company with this name already exists.\"\n        ],\n        \"email\": [\n            \"company with this email already exists.\"\n        ],\n        \"code\": [\n            \"company with this code already exists.\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/v1/companies/",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"companies",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/companies/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"companies",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:21:23 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "665"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Data retrieved successfully\",\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total_pages\": 1,\n        \"total_items\": 2,\n        \"page_size\": 10,\n        \"has_next\": false,\n        \"has_previous\": false,\n        \"next_page\": null,\n        \"previous_page\": null\n    },\n    \"results\": [\n        {\n            \"id\": \"2fa66c0f-c54d-4766-9727-389a0849ae1f\",\n            \"name\": \"Innoventes\",\n            \"email\": \"innoventes@gmail.com\",\n            \"code\": \"AB12E\",\n            \"strength\": 1,\n            \"website_url\": \"\",\n            \"created_at\": \"2025-10-16T13:19:57.057457Z\",\n            \"updated_at\": \"2025-10-16T13:19:57.057482Z\"\n        },\n        {\n            \"id\": \"070e0a64-ac40-4e00-8372-a6566a6daf81\",\n            \"name\": \"RMT\",\n            \"email\": \"rmt@gmail.com\",\n            \"code\": \"AB12N\",\n            \"strength\": 1,\n            \"website_url\": \"\",\n            \"created_at\": \"2025-10-16T13:21:19.766850Z\",\n            \"updated_at\": \"2025-10-16T13:21:19.766882Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"company",
+						"392f9d66-399c-4220-8deb-ba34891f6c42",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucess",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								"392f9d66-399c-4220-8deb-ba34891f6c42",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:07:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "303"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": 1,\n    \"status-message\": \"Company retrieved successfully.\",\n    \"data\": {\n        \"id\": \"392f9d66-399c-4220-8deb-ba34891f6c42\",\n        \"name\": \"Innoventes\",\n        \"email\": \"innoventes@gmail.com\",\n        \"code\": \"AB12E\",\n        \"strength\": 1,\n        \"website_url\": \"\",\n        \"created_at\": \"2025-10-16T13:05:38.343734Z\",\n        \"updated_at\": \"2025-10-16T13:05:38.343788Z\"\n    }\n}"
+				},
+				{
+					"name": "404 not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c41/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								"392f9d66-399c-4220-8deb-ba34891f6c41",
+								""
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:07:47 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": -1,\n    \"status-message\": \"Company not found.\",\n    \"data\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit Company",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Innoventes\",\n    \"email\": \"innoventes@gmail.com\",\n    \"code\": \"AB12N\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/update/",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"company",
+						"392f9d66-399c-4220-8deb-ba34891f6c42",
+						"update",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Innoventes\",\n    \"email\": \"innoventes@gmail.com\",\n    \"code\": \"AB12N\",\n    \"strength\": \"1\",\n    \"website_url\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/update/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								"392f9d66-399c-4220-8deb-ba34891f6c42",
+								"update",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:15:36 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "PUT, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "301"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": 1,\n    \"status-message\": \"Company updated successfully.\",\n    \"data\": {\n        \"id\": \"392f9d66-399c-4220-8deb-ba34891f6c42\",\n        \"name\": \"Innoventes\",\n        \"email\": \"innoventes@gmail.com\",\n        \"code\": \"AB12N\",\n        \"strength\": 1,\n        \"website_url\": \"\",\n        \"created_at\": \"2025-10-16T13:05:38.343734Z\",\n        \"updated_at\": \"2025-10-16T13:15:36.075035Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/delete/",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"company",
+						"392f9d66-399c-4220-8deb-ba34891f6c42",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/delete/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								"392f9d66-399c-4220-8deb-ba34891f6c42",
+								"delete",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:16:25 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "DELETE, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": 1,\n    \"status-message\": \"Company deleted successfully.\",\n    \"data\": {}\n}"
+				},
+				{
+					"name": "Not found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/company/392f9d66-399c-4220-8deb-ba34891f6c42/delete/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"company",
+								"392f9d66-399c-4220-8deb-ba34891f6c42",
+								"delete",
+								""
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Oct 2025 13:16:35 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.13.7"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "DELETE, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status-code\": -1,\n    \"status-message\": \"Company not found.\",\n    \"data\": {}\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}
